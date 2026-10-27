@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thai AirAsia Academy - Register for Course Details</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter & Prompt for Thai -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Prompt', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 min-h-screen text-gray-800 antialiased flex flex-col justify-between">
+
+  <!-- Sticky Top Header with AirAsia Logo & Language Switcher -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm">
+    <div class="max-w-xl mx-auto px-4 py-3 flex items-center justify-between">
+      
+      <!-- Left: AirAsia Logo -->
+      <div class="flex items-center space-x-2.5">
+        <img 
+          src="https://upload.wikimedia.org/wikipedia/commons/f/f5/AirAsia_New_Logo.svg" 
+          alt="AirAsia" 
+          class="h-8 md:h-9 w-auto object-contain"
+          onerror="this.style.display='none'; document.getElementById('logoFallback').classList.remove('hidden');"
+        />
+        <!-- Offline/Error Fallback Badge -->
+        <div id="logoFallback" class="hidden items-center">
+          <span class="inline-flex items-center justify-center bg-[#E52B20] text-white font-black text-lg px-2.5 py-0.5 rounded-full tracking-tighter">airasia</span>
+        </div>
+        <span class="text-xs font-bold tracking-widest text-gray-400 uppercase border-l border-gray-300 pl-2.5">Thai AirAsia Academy</span>
+      </div>
+
+      <!-- Right: Language Switcher Toggle -->
+      <div class="flex items-center bg-gray-100 p-1 rounded-full border border-gray-200">
+        <button 
+          id="btnTh" 
+          type="button" 
+          onclick="setLanguage('th')" 
+          class="px-2.5 py-1 text-xs font-semibold rounded-full transition-all duration-200 bg-[#E52B20] text-white shadow-sm">
+          TH
+        </button>
+        <button 
+          id="btnEn" 
+          type="button" 
+          onclick="setLanguage('en')" 
+          class="px-2.5 py-1 text-xs font-semibold rounded-full transition-all duration-200 text-gray-600 hover:text-black">
+          EN
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="max-w-xl mx-auto w-full px-4 py-6 md:py-10 flex-grow">
+    
+    <!-- Registration Card -->
+    <div class="bg-white rounded-3xl shadow-xl border border-gray-200/80 overflow-hidden">
+      
+      <!-- Red Accent Bar -->
+      <div class="h-2.5 bg-[#E52B20] w-full"></div>
+
+      <!-- Form Section -->
+      <section id="formSection" class="p-6 md:p-8">
+        <div class="mb-6">
+          <span class="inline-block text-xs font-bold tracking-wider uppercase text-[#E52B20] bg-red-50 border border-red-100 px-3 py-1 rounded-full mb-2" id="badgeText">
+            Thai AirAsia Academy
+          </span>
+          <h1 class="text-2xl md:text-3xl font-bold text-gray-900" id="headerTitle">
+            ลงทะเบียนเพื่อรับรายละเอียดหลักสูตร
+          </h1>
+          <p class="text-sm text-gray-500 mt-1" id="headerSubtitle">
+            กรอกข้อมูลสั้นๆ เพื่อรับโบรชัวร์และให้ทีมงานติดต่อแจ้งข้อเสนอพิเศษ
+          </p>
+        </div>
+
+        <form id="leadForm" class="space-y-4">
+          
+          <!-- Full Name -->
+          <div>
+            <label for="fullname" class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1" id="labelFullname">
+              ชื่อ - นามสกุล <span class="text-[#E52B20]">*</span>
+            </label>
+            <input 
+              type="text" 
+              id="fullname" 
+              name="fullname" 
+              required
+              placeholder="สมชาย ใจดี" 
+              class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-300 text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#E52B20] focus:border-transparent transition"
+            >
+          </div>
+
+          <!-- Phone Number -->
+          <div>
+            <label for="phone" class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1" id="labelPhone">
+              เบอร์โทรศัพท์ <span class="text-[#E52B20]">*</span>
+            </label>
+            <input 
+              type="tel" 
+              id="phone" 
+              name="phone" 
+              inputmode="numeric"
+              pattern="[0-9]{9,10}"
+              required
+              placeholder="0812345678" 
+              class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-300 text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#E52B20] focus:border-transparent transition"
+            >
+          </div>
+
+          <!-- Email -->
+          <div>
+            <label for="email" class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1" id="labelEmail">
+              อีเมล <span class="text-[#E52B20]">*</span>
+            </label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              autocomplete="email"
+              required
+              placeholder="example@gmail.com" 
+              class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-300 text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#E52B20] focus:border-transparent transition"
+            >
+          </div>
+
+          <!-- University / Organization -->
+          <div>
+            <label for="organization" class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1" id="labelOrg">
+              มหาวิทยาลัย / หน่วยงาน <span class="text-[#E52B20]">*</span>
+            </label>
+            <input 
+              type="text" 
+              id="organization" 
+              name="organization" 
+              required
+              placeholder="ชื่อมหาวิทยาลัย หรือหน่วยงาน" 
+              class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-300 text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#E52B20] focus:border-transparent transition"
+            >
+          </div>
+
+          <!-- Course Interest -->
+          <div>
+            <label for="course" class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1" id="labelCourse">
+              สนใจหลักสูตรด้านไหนเป็นพิเศษ? <span class="text-[#E52B20]">*</span>
+            </label>
+            <select 
+              id="course" 
+              name="course" 
+              required 
+              onchange="handleCourseChange(this.value)"
+              class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-300 text-sm text-gray-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#E52B20] focus:border-transparent transition"
+            >
+              <option value="" disabled selected id="optDefault">เลือกหลักสูตรที่ต้องการ</option>
+              <option value="ศึกษาดูงาน - AirAsia Visit" id="optVisit">✈️ ศึกษาดูงาน - AirAsia Visit</option>
+              <option value="Behind the Sky - ศึกษาเบื้องหลังการทำงาน" id="optBehind">⚙️ Behind the Sky - ศึกษาเบื้องหลังการทำงาน</option>
+              <option value="Safety Evacuation" id="optSafety">🦺 Safety Evacuation</option>
+              <option value="Soft Skills" id="optSoft">🧠 Soft Skills</option>
+              <option value="Others" id="optOther">📝 อื่นๆ (โปรดระบุ)</option>
+            </select>
+          </div>
+
+          <!-- Other Course Specification (Conditional) -->
+          <div id="otherCourseField" class="hidden">
+            <label for="otherCourse" class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1" id="labelOtherDetail">
+              ระบุหลักสูตรหรือหัวข้อที่สนใจ <span class="text-[#E52B20]">*</span>
+            </label>
+            <input 
+              type="text" 
+              id="otherCourse" 
+              name="otherCourse" 
+              placeholder="เช่น การบริการลูกค้า, ภาษาอังกฤษเพื่อการบิน" 
+              class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-300 text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#E52B20] focus:border-transparent transition"
+            >
+          </div>
+
+          <!-- PDPA Consent Checkbox -->
+          <div class="pt-2">
+            <label class="flex items-start space-x-3 cursor-pointer">
+              <input 
+                type="checkbox" 
+                id="pdpaConsent" 
+                required 
+                class="mt-1 h-4 w-4 rounded border-gray-300 text-[#E52B20] focus:ring-[#E52B20]"
+              >
+              <span class="text-xs text-gray-500 leading-relaxed" id="pdpaText">
+                ข้าพเจ้ายินยอมให้ Thai AirAsia Academy เก็บรวบรวมและใช้ข้อมูลติดต่อนี้ เพื่อส่งโบรชัวร์และติดต่อแจ้งข้อเสนอพิเศษตามนโยบายความเป็นส่วนตัว
+              </span>
+            </label>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="pt-3">
+            <button 
+              type="submit" 
+              id="submitBtn" 
+              class="w-full flex items-center justify-center space-x-2 bg-[#E52B20] hover:bg-red-700 active:scale-[0.99] text-white font-medium py-3.5 px-6 rounded-xl shadow-lg shadow-red-500/25 transition duration-200 disabled:opacity-70 disabled:cursor-not-allowed"
+            >
+              <span id="btnText">ลงทะเบียนรับรายละเอียด</span>
+              <svg id="btnSpinner" class="hidden animate-spin h-5 w-5 text-white ml-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Error Alert Banner -->
+          <div id="errorMessage" class="hidden p-3 bg-red-50 border border-red-200 rounded-xl text-xs text-red-700 text-center"></div>
+
+        </form>
+      </section>
+
+      <!-- Thank You / Success Section (Hidden by default) -->
+      <section id="successSection" class="hidden p-8 text-center space-y-6">
+        <div class="w-16 h-16 bg-red-50 text-[#E52B20] rounded-full flex items-center justify-center mx-auto ring-8 ring-red-50/50">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+          </svg>
+        </div>
+
+        <div class="space-y-2">
+          <h2 class="text-2xl font-bold text-gray-900" id="successTitle">ขอบคุณสำหรับการลงทะเบียน</h2>
+          <p class="text-sm text-gray-600 max-w-sm mx-auto" id="successSubtitle">
+            คุณสามารถกดปุ่มด้านล่างเพื่อเปิดอ่านโบรชัวร์และรายละเอียดหลักสูตรฉบับเต็มได้ทันที
+          </p>
+        </div>
+
+        <div class="pt-2">
+          <!-- Canva Link Button -->
+          <a 
+            id="canvaLinkBtn" 
+            href="#" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="inline-flex items-center justify-center space-x-2 w-full bg-[#E52B20] hover:bg-red-700 text-white font-medium py-3.5 px-6 rounded-xl shadow-lg shadow-red-500/25 transition duration-200 active:scale-[0.99]"
+          >
+            <span id="btnCanvaText">📖 คลิกเพื่อดูหลักสูตร</span>
+          </a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="py-4 text-center text-xs text-gray-400">
+    © 2026 AirAsia Academy. All rights reserved.
+  </footer>
+
+  <script>
+    // ==========================================
+    // ⚙️ 1. CONFIGURATION (ใส่ URL ตรงนี้)
+    // ==========================================
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxRy68X2rX7EVsDeiWMpa5wZIgkiw0HHaUYdOY-Pt4VMXlpT0AjSSszX64FGrc8YHLP/exec';
+    const CANVA_BROCHURE_URL = 'https://thaiairasiaacademy.my.canva.site';
+
+    // Set Canva link to button
+    document.getElementById('canvaLinkBtn').setAttribute('href', CANVA_BROCHURE_URL);
+
+    // ==========================================
+    // 🌐 2. MULTI-LANGUAGE DICTIONARY (TH/EN)
+    // ==========================================
+    const i18n = {
+      th: {
+        badgeText: "Thai AirAsia Academy",
+        headerTitle: "ลงทะเบียนเพื่อรับรายละเอียดหลักสูตร",
+        headerSubtitle: "กรอกข้อมูลสั้นๆ เพื่อรับโบรชัวร์และให้ทีมงานติดต่อแจ้งข้อเสนอพิเศษ",
+        labelFullname: "ชื่อ - นามสกุล *",
+        phFullname: "สมชาย ใจดี",
+        labelPhone: "เบอร์โทรศัพท์ *",
+        phPhone: "0812345678",
+        labelEmail: "อีเมล *",
+        phEmail: "example@gmail.com",
+        labelOrg: "มหาวิทยาลัย / หน่วยงาน *",
+        phOrg: "ชื่อมหาวิทยาลัย หรือหน่วยงาน",
+        labelCourse: "สนใจหลักสูตรด้านไหนเป็นพิเศษ? *",
+        optDefault: "เลือกหลักสูตรที่ต้องการ",
+        optVisit: "✈️ ศึกษาดูงาน - AirAsia Visit",
+        optBehind: "⚙️ Behind the Sky - ศึกษาเบื้องหลังการทำงาน",
+        optSafety: "🦺 Safety Evacuation",
+        optSoft: "🧠 Soft Skills",
+        optOther: "📝 อื่นๆ (โปรดระบุ)",
+        labelOtherDetail: "ระบุหลักสูตรหรือหัวข้อที่สนใจ *",
+        phOtherDetail: "เช่น การบริการลูกค้า, ภาษาอังกฤษเพื่อการบิน",
+        pdpaText: "ข้าพเจ้ายินยอมให้ Thai AirAsia Academy เก็บรวบรวมและใช้ข้อมูลติดต่อนี้ เพื่อส่งโบรชัวร์และติดต่อแจ้งข้อเสนอพิเศษตามนโยบายความเป็นส่วนตัว",
+        btnSubmit: "ลงทะเบียนรับรายละเอียด",
+        btnSubmitting: "กำลังประมวลผล...",
+        successTitle: "ขอบคุณสำหรับการลงทะเบียน",
+        successSubtitle: "ทีมงานได้รับข้อมูลของคุณเรียบร้อยแล้ว สามารถกดปุ่มด้านล่างเพื่อเปิดอ่านโบรชัวร์หลักสูตรได้ทันที",
+        btnCanva: "📖 เปิดดูรายละเอียดหลักสูตร (Canva)",
+        errSubmit: "เกิดข้อผิดพลาดในการส่งข้อมูล กรุณาลองใหม่อีกครั้ง"
+      },
+      en: {
+        badgeText: "Thai AirAsia Academy",
+        headerTitle: "Register for Course Details",
+        headerSubtitle: "Complete this quick form to get our brochures and special offers.",
+        labelFullname: "Full Name *",
+        phFullname: "John Doe",
+        labelPhone: "Phone Number *",
+        phPhone: "0812345678",
+        labelEmail: "Email Address *",
+        phEmail: "example@gmail.com",
+        labelOrg: "University / Organization *",
+        phOrg: "University or Company name",
+        labelCourse: "Course of Interest *",
+        optDefault: "Select preferred course",
+        optVisit: "✈️ Study Tour - AirAsia Visit",
+        optBehind: "⚙️ Behind the Sky - Operational Tour",
+        optSafety: "🦺 Safety Evacuation",
+        optSoft: "🧠 Soft Skills",
+        optOther: "📝 Others (Please specify)",
+        labelOtherDetail: "Specify course or topic of interest *",
+        phOtherDetail: "e.g., Customer Service, Aviation English",
+        pdpaText: "I agree to let AirAsia Academy collect and use my contact information to provide brochures and program updates under the Privacy Policy.",
+        btnSubmit: "Register to Get Details",
+        btnSubmitting: "Processing...",
+        successTitle: "Thank You for Registering",
+        successSubtitle: "Tap the button below to explore our full course details and brochure.",
+        btnCanva: "📖 Click to View Courses",
+        errSubmit: "An error occurred while submitting. Please try again."
+      }
+    };
+
+    let currentLang = 'th';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      const t = i18n[lang];
+
+      // Update Header & Badge
+      document.getElementById('badgeText').textContent = t.badgeText;
+      document.getElementById('headerTitle').textContent = t.headerTitle;
+      document.getElementById('headerSubtitle').textContent = t.headerSubtitle;
+
+      // Update Labels & Placeholders
+      document.getElementById('labelFullname').innerHTML = `${t.labelFullname}`;
+      document.getElementById('fullname').placeholder = t.phFullname;
+
+      document.getElementById('labelPhone').innerHTML = `${t.labelPhone}`;
+      document.getElementById('phone').placeholder = t.phPhone;
+
+      document.getElementById('labelEmail').innerHTML = `${t.labelEmail}`;
+      document.getElementById('email').placeholder = t.phEmail;
+
+      document.getElementById('labelOrg').innerHTML = `${t.labelOrg}`;
+      document.getElementById('organization').placeholder = t.phOrg;
+
+      document.getElementById('labelCourse').innerHTML = `${t.labelCourse}`;
+      document.getElementById('optDefault').textContent = t.optDefault;
+      document.getElementById('optVisit').textContent = t.optVisit;
+      document.getElementById('optBehind').textContent = t.optBehind;
+      document.getElementById('optSafety').textContent = t.optSafety;
+      document.getElementById('optSoft').textContent = t.optSoft;
+      document.getElementById('optOther').textContent = t.optOther;
+
+      document.getElementById('labelOtherDetail').innerHTML = `${t.labelOtherDetail}`;
+      document.getElementById('otherCourse').placeholder = t.phOtherDetail;
+
+      document.getElementById('pdpaText').textContent = t.pdpaText;
+      document.getElementById('btnText').textContent = t.btnSubmit;
+
+      // Update Success Section
+      document.getElementById('successTitle').textContent = t.successTitle;
+      document.getElementById('successSubtitle').textContent = t.successSubtitle;
+      document.getElementById('btnCanvaText').textContent = t.btnCanva;
+
+      // Toggle Active Switcher Buttons
+      const btnTh = document.getElementById('btnTh');
+      const btnEn = document.getElementById('btnEn');
+      if (lang === 'th') {
+        btnTh.className = "px-2.5 py-1 text-xs font-semibold rounded-full transition-all duration-200 bg-[#E52B20] text-white shadow-sm";
+        btnEn.className = "px-2.5 py-1 text-xs font-semibold rounded-full transition-all duration-200 text-gray-600 hover:text-black";
+      } else {
+        btnEn.className = "px-2.5 py-1 text-xs font-semibold rounded-full transition-all duration-200 bg-[#E52B20] text-white shadow-sm";
+        btnTh.className = "px-2.5 py-1 text-xs font-semibold rounded-full transition-all duration-200 text-gray-600 hover:text-black";
+      }
+    }
+
+    // ==========================================
+    // 🔀 3. FORM CONTROLLER & SUBMISSION
+    // ==========================================
+    function handleCourseChange(value) {
+      const otherField = document.getElementById('otherCourseField');
+      const otherInput = document.getElementById('otherCourse');
+      if (value === 'Others') {
+        otherField.classList.remove('hidden');
+        otherInput.required = true;
+        otherInput.focus();
+      } else {
+        otherField.classList.add('hidden');
+        otherInput.required = false;
+        otherInput.value = '';
+      }
+    }
+
+    const form = document.getElementById('leadForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const btnText = document.getElementById('btnText');
+    const btnSpinner = document.getElementById('btnSpinner');
+    const errorMessage = document.getElementById('errorMessage');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      errorMessage.classList.add('hidden');
+
+      // Set Loading State
+      submitBtn.disabled = true;
+      btnText.textContent = i18n[currentLang].btnSubmitting;
+      btnSpinner.classList.remove('hidden');
+
+      const formData = new FormData(form);
+      const params = new URLSearchParams(formData);
+
+      fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        body: params
+      })
+      .then(response => {
+        document.getElementById('formSection').classList.add('hidden');
+        document.getElementById('successSection').classList.remove('hidden');
+      })
+      .catch(error => {
+        console.error('Submission Error:', error);
+        errorMessage.textContent = i18n[currentLang].errSubmit;
+        errorMessage.classList.remove('hidden');
+        
+        // Restore Button State
+        submitBtn.disabled = false;
+        btnText.textContent = i18n[currentLang].btnSubmit;
+        btnSpinner.classList.add('hidden');
+      });
+    });
+  </script>
+</body>
+</html>
