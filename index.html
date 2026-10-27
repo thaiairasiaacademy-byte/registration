@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thai AirAsia Academy - Register for Course Details</title>
+  <title>Thai AirAsia Academy - Register for Program Details</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts: Inter & Prompt for Thai -->
+  <!-- Google Fonts: Prompt for Thai & Inter for EN -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -18,7 +18,7 @@
 </head>
 <body class="bg-gray-100 min-h-screen text-gray-800 antialiased flex flex-col justify-between">
 
-  <!-- Sticky Top Header with AirAsia Logo & Language Switcher -->
+  <!-- Sticky Top Header -->
   <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm">
     <div class="max-w-xl mx-auto px-4 py-3 flex items-center justify-between">
       
@@ -30,7 +30,7 @@
           class="h-8 md:h-9 w-auto object-contain"
           onerror="this.style.display='none'; document.getElementById('logoFallback').classList.remove('hidden');"
         />
-        <!-- Offline/Error Fallback Badge -->
+        <!-- Fallback Badge -->
         <div id="logoFallback" class="hidden items-center">
           <span class="inline-flex items-center justify-center bg-[#E52B20] text-white font-black text-lg px-2.5 py-0.5 rounded-full tracking-tighter">airasia</span>
         </div>
@@ -73,11 +73,11 @@
           <span class="inline-block text-xs font-bold tracking-wider uppercase text-[#E52B20] bg-red-50 border border-red-100 px-3 py-1 rounded-full mb-2" id="badgeText">
             Thai AirAsia Academy
           </span>
-          <h1 class="text-2xl md:text-3xl font-bold text-gray-900" id="headerTitle">
-            ลงทะเบียนเพื่อรับรายละเอียดหลักสูตร
+          <h1 class="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight" id="headerTitle">
+            ลงทะเบียนรับรายละเอียดโปรแกรม
           </h1>
-          <p class="text-sm text-gray-500 mt-1" id="headerSubtitle">
-            กรอกข้อมูลสั้นๆ เพื่อรับโบรชัวร์และให้ทีมงานติดต่อแจ้งข้อเสนอพิเศษ
+          <p class="text-sm text-gray-500 mt-1.5 leading-relaxed" id="headerSubtitle">
+            กรอกข้อมูลสั้น ๆ เพื่อดูรายละเอียดโปรแกรมเบื้องต้นของ Thai AirAsia Academy
           </p>
         </div>
 
@@ -94,6 +94,22 @@
               name="fullname" 
               required
               placeholder="สมชาย ใจดี" 
+              class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-300 text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#E52B20] focus:border-transparent transition"
+            >
+          </div>
+
+          <!-- Email -->
+          <div>
+            <label for="email" class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1" id="labelEmail">
+              อีเมล (สำหรับรับโบรชัวร์) <span class="text-[#E52B20]">*</span>
+            </label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              autocomplete="email"
+              required
+              placeholder="example@gmail.com" 
               class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-300 text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#E52B20] focus:border-transparent transition"
             >
           </div>
@@ -115,73 +131,90 @@
             >
           </div>
 
-          <!-- Email -->
-          <div>
-            <label for="email" class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1" id="labelEmail">
-              อีเมล <span class="text-[#E52B20]">*</span>
-            </label>
-            <input 
-              type="email" 
-              id="email" 
-              name="email" 
-              autocomplete="email"
-              required
-              placeholder="example@gmail.com" 
-              class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-300 text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#E52B20] focus:border-transparent transition"
-            >
-          </div>
-
-          <!-- University / Organization -->
+          <!-- Institution / Organization -->
           <div>
             <label for="organization" class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1" id="labelOrg">
-              มหาวิทยาลัย / หน่วยงาน <span class="text-[#E52B20]">*</span>
+              สถาบัน / องค์กร <span class="text-[#E52B20]">*</span>
             </label>
             <input 
               type="text" 
               id="organization" 
               name="organization" 
               required
-              placeholder="ชื่อมหาวิทยาลัย หรือหน่วยงาน" 
+              placeholder="ระบุชื่อสถาบัน มหาวิทยาลัย หรือองค์กรของคุณ" 
               class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-300 text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#E52B20] focus:border-transparent transition"
             >
           </div>
 
-          <!-- Course Interest -->
-          <div>
-            <label for="course" class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1" id="labelCourse">
-              สนใจหลักสูตรด้านไหนเป็นพิเศษ? <span class="text-[#E52B20]">*</span>
+          <!-- Interested Programs (Multiple Choice) -->
+          <div class="pt-1">
+            <label class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-2" id="labelCourse">
+              สนใจโปรแกรมใดบ้าง? (เลือกได้มากกว่า 1 ข้อ) <span class="text-[#E52B20]">*</span>
             </label>
-            <select 
-              id="course" 
-              name="course" 
-              required 
-              onchange="handleCourseChange(this.value)"
-              class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-300 text-sm text-gray-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#E52B20] focus:border-transparent transition"
-            >
-              <option value="" disabled selected id="optDefault">เลือกหลักสูตรที่ต้องการ</option>
-              <option value="ศึกษาดูงาน - AirAsia Visit" id="optVisit">✈️ ศึกษาดูงาน - AirAsia Visit</option>
-              <option value="Behind the Sky - ศึกษาเบื้องหลังการทำงาน" id="optBehind">⚙️ Behind the Sky - ศึกษาเบื้องหลังการทำงาน</option>
-              <option value="Safety Evacuation" id="optSafety">🦺 Safety Evacuation</option>
-              <option value="Soft Skills" id="optSoft">🧠 Soft Skills</option>
-              <option value="Others" id="optOther">📝 อื่นๆ (โปรดระบุ)</option>
-            </select>
+            
+            <div class="space-y-2.5" id="programsContainer">
+              <label class="flex items-start p-3 bg-gray-50 border border-gray-200 rounded-xl hover:border-red-300 hover:bg-red-50/20 cursor-pointer transition">
+                <input type="checkbox" name="programs" value="AirAsia Visit — ศึกษาดูงานด้านการบิน" class="program-checkbox mt-0.5 h-4 w-4 rounded border-gray-300 text-[#E52B20] focus:ring-[#E52B20]">
+                <div class="ml-3 text-sm">
+                  <span class="font-medium text-gray-900 block" id="optVisitTitle">✈️ AirAsia Visit</span>
+                  <span class="text-xs text-gray-500 block mt-0.5" id="optVisitDesc">ศึกษาดูงานด้านการบิน</span>
+                </div>
+              </label>
+
+              <label class="flex items-start p-3 bg-gray-50 border border-gray-200 rounded-xl hover:border-red-300 hover:bg-red-50/20 cursor-pointer transition">
+                <input type="checkbox" name="programs" value="Behind the Sky — เปิดประสบการณ์เบื้องหลังการทำงานด้านการบิน" class="program-checkbox mt-0.5 h-4 w-4 rounded border-gray-300 text-[#E52B20] focus:ring-[#E52B20]">
+                <div class="ml-3 text-sm">
+                  <span class="font-medium text-gray-900 block" id="optBehindTitle">⚙️ Behind the Sky</span>
+                  <span class="text-xs text-gray-500 block mt-0.5" id="optBehindDesc">เปิดประสบการณ์เบื้องหลังการทำงานด้านการบิน</span>
+                </div>
+              </label>
+
+              <label class="flex items-start p-3 bg-gray-50 border border-gray-200 rounded-xl hover:border-red-300 hover:bg-red-50/20 cursor-pointer transition">
+                <input type="checkbox" name="programs" value="Safety Evacuation — เรียนรู้การอพยพฉุกเฉิน" class="program-checkbox mt-0.5 h-4 w-4 rounded border-gray-300 text-[#E52B20] focus:ring-[#E52B20]">
+                <div class="ml-3 text-sm">
+                  <span class="font-medium text-gray-900 block" id="optSafetyTitle">🦺 Safety Evacuation</span>
+                  <span class="text-xs text-gray-500 block mt-0.5" id="optSafetyDesc">เรียนรู้การอพยพฉุกเฉิน</span>
+                </div>
+              </label>
+
+              <label class="flex items-start p-3 bg-gray-50 border border-gray-200 rounded-xl hover:border-red-300 hover:bg-red-50/20 cursor-pointer transition">
+                <input type="checkbox" name="programs" value="Soft Skills — พัฒนาทักษะการทำงาน" class="program-checkbox mt-0.5 h-4 w-4 rounded border-gray-300 text-[#E52B20] focus:ring-[#E52B20]">
+                <div class="ml-3 text-sm">
+                  <span class="font-medium text-gray-900 block" id="optSoftTitle">💬 Soft Skills</span>
+                  <span class="text-xs text-gray-500 block mt-0.5" id="optSoftDesc">พัฒนาทักษะการทำงาน</span>
+                </div>
+              </label>
+
+              <label class="flex items-start p-3 bg-gray-50 border border-gray-200 rounded-xl hover:border-red-300 hover:bg-red-50/20 cursor-pointer transition">
+                <input type="checkbox" name="programs" value="ขอรับภาพรวมโปรแกรมทั้งหมดก่อน" class="program-checkbox mt-0.5 h-4 w-4 rounded border-gray-300 text-[#E52B20] focus:ring-[#E52B20]">
+                <div class="ml-3 text-sm">
+                  <span class="font-medium text-gray-900 block" id="optOverviewTitle">📋 ขอรับภาพรวมโปรแกรมทั้งหมดก่อน</span>
+                </div>
+              </label>
+
+              <label class="flex items-start p-3 bg-gray-50 border border-gray-200 rounded-xl hover:border-red-300 hover:bg-red-50/20 cursor-pointer transition">
+                <input type="checkbox" id="chkOther" name="programs" value="Others" onchange="toggleOtherInput(this.checked)" class="program-checkbox mt-0.5 h-4 w-4 rounded border-gray-300 text-[#E52B20] focus:ring-[#E52B20]">
+                <div class="ml-3 text-sm">
+                  <span class="font-medium text-gray-900 block" id="optOtherTitle">📝 อื่น ๆ โปรดระบุ</span>
+                </div>
+              </label>
+            </div>
+
+            <!-- Other Field input -->
+            <div id="otherCourseField" class="hidden mt-2.5">
+              <input 
+                type="text" 
+                id="otherCourse" 
+                name="otherCourse" 
+                placeholder="ระบุโปรแกรมหรือหัวข้อที่สนใจ..." 
+                class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-300 text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#E52B20] focus:border-transparent transition"
+              >
+            </div>
+            
+            <p id="checkboxValidationMsg" class="hidden text-xs text-[#E52B20] mt-1.5 font-medium"></p>
           </div>
 
-          <!-- Other Course Specification (Conditional) -->
-          <div id="otherCourseField" class="hidden">
-            <label for="otherCourse" class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1" id="labelOtherDetail">
-              ระบุหลักสูตรหรือหัวข้อที่สนใจ <span class="text-[#E52B20]">*</span>
-            </label>
-            <input 
-              type="text" 
-              id="otherCourse" 
-              name="otherCourse" 
-              placeholder="เช่น การบริการลูกค้า, ภาษาอังกฤษเพื่อการบิน" 
-              class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-300 text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#E52B20] focus:border-transparent transition"
-            >
-          </div>
-
-          <!-- PDPA Consent Checkbox -->
+          <!-- PDPA Consent -->
           <div class="pt-2">
             <label class="flex items-start space-x-3 cursor-pointer">
               <input 
@@ -203,7 +236,7 @@
               id="submitBtn" 
               class="w-full flex items-center justify-center space-x-2 bg-[#E52B20] hover:bg-red-700 active:scale-[0.99] text-white font-medium py-3.5 px-6 rounded-xl shadow-lg shadow-red-500/25 transition duration-200 disabled:opacity-70 disabled:cursor-not-allowed"
             >
-              <span id="btnText">ลงทะเบียนรับรายละเอียด</span>
+              <span id="btnText">ลงทะเบียนและดูรายละเอียด</span>
               <svg id="btnSpinner" class="hidden animate-spin h-5 w-5 text-white ml-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                 <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
@@ -211,29 +244,29 @@
             </button>
           </div>
 
-          <!-- Error Alert Banner -->
           <div id="errorMessage" class="hidden p-3 bg-red-50 border border-red-200 rounded-xl text-xs text-red-700 text-center"></div>
 
         </form>
       </section>
 
-      <!-- Thank You / Success Section (Hidden by default) -->
+      <!-- Thank You / Success Section -->
       <section id="successSection" class="hidden p-8 text-center space-y-6">
-        <div class="w-16 h-16 bg-red-50 text-[#E52B20] rounded-full flex items-center justify-center mx-auto ring-8 ring-red-50/50">
-          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+        <div class="w-16 h-16 bg-red-50 border border-red-100 rounded-full flex items-center justify-center mx-auto shadow-sm">
+          <svg class="w-8 h-8 text-[#E52B20]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
           </svg>
         </div>
 
         <div class="space-y-2">
-          <h2 class="text-2xl font-bold text-gray-900" id="successTitle">ขอบคุณสำหรับการลงทะเบียน</h2>
-          <p class="text-sm text-gray-600 max-w-sm mx-auto" id="successSubtitle">
-            คุณสามารถกดปุ่มด้านล่างเพื่อเปิดอ่านโบรชัวร์และรายละเอียดหลักสูตรฉบับเต็มได้ทันที
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight" id="successTitle">
+            ขอบคุณสำหรับการลงทะเบียน
+          </h2>
+          <p class="text-sm text-gray-600 max-w-sm mx-auto leading-relaxed" id="successSubtitle">
+            กดปุ่มด้านล่างเพื่อเปิดดูรายละเอียดโปรแกรมของ Thai AirAsia Academy
           </p>
         </div>
 
         <div class="pt-2">
-          <!-- Canva Link Button -->
           <a 
             id="canvaLinkBtn" 
             href="#" 
@@ -241,7 +274,7 @@
             rel="noopener noreferrer" 
             class="inline-flex items-center justify-center space-x-2 w-full bg-[#E52B20] hover:bg-red-700 text-white font-medium py-3.5 px-6 rounded-xl shadow-lg shadow-red-500/25 transition duration-200 active:scale-[0.99]"
           >
-            <span id="btnCanvaText">📖 คลิกเพื่อดูหลักสูตร</span>
+            <span id="btnCanvaText">📖 เปิดดูรายละเอียดโปรแกรม</span>
           </a>
         </div>
       </section>
@@ -250,17 +283,16 @@
   </main>
 
   <footer class="py-4 text-center text-xs text-gray-400">
-    © 2026 AirAsia Academy. All rights reserved.
+    © 2026 Thai AirAsia Academy. All rights reserved.
   </footer>
 
   <script>
     // ==========================================
-    // ⚙️ 1. CONFIGURATION (ใส่ URL ตรงนี้)
+    // ⚙️ 1. CONFIGURATION
     // ==========================================
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxRy68X2rX7EVsDeiWMpa5wZIgkiw0HHaUYdOY-Pt4VMXlpT0AjSSszX64FGrc8YHLP/exec';
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/exec';
     const CANVA_BROCHURE_URL = 'https://thaiairasiaacademy.my.canva.site';
 
-    // Set Canva link to button
     document.getElementById('canvaLinkBtn').setAttribute('href', CANVA_BROCHURE_URL);
 
     // ==========================================
@@ -269,60 +301,68 @@
     const i18n = {
       th: {
         badgeText: "Thai AirAsia Academy",
-        headerTitle: "ลงทะเบียนเพื่อรับรายละเอียดหลักสูตร",
-        headerSubtitle: "กรอกข้อมูลสั้นๆ เพื่อรับโบรชัวร์และให้ทีมงานติดต่อแจ้งข้อเสนอพิเศษ",
+        headerTitle: "ลงทะเบียนรับรายละเอียดโปรแกรม",
+        headerSubtitle: "กรอกข้อมูลสั้น ๆ เพื่อดูรายละเอียดโปรแกรมเบื้องต้นของ Thai AirAsia Academy",
         labelFullname: "ชื่อ - นามสกุล *",
         phFullname: "สมชาย ใจดี",
+        labelEmail: "อีเมล (สำหรับรับโบรชัวร์) *",
+        phEmail: "example@gmail.com",
         labelPhone: "เบอร์โทรศัพท์ *",
         phPhone: "0812345678",
-        labelEmail: "อีเมล *",
-        phEmail: "example@gmail.com",
-        labelOrg: "มหาวิทยาลัย / หน่วยงาน *",
-        phOrg: "ชื่อมหาวิทยาลัย หรือหน่วยงาน",
-        labelCourse: "สนใจหลักสูตรด้านไหนเป็นพิเศษ? *",
-        optDefault: "เลือกหลักสูตรที่ต้องการ",
-        optVisit: "✈️ ศึกษาดูงาน - AirAsia Visit",
-        optBehind: "⚙️ Behind the Sky - ศึกษาเบื้องหลังการทำงาน",
-        optSafety: "🦺 Safety Evacuation",
-        optSoft: "🧠 Soft Skills",
-        optOther: "📝 อื่นๆ (โปรดระบุ)",
-        labelOtherDetail: "ระบุหลักสูตรหรือหัวข้อที่สนใจ *",
-        phOtherDetail: "เช่น การบริการลูกค้า, ภาษาอังกฤษเพื่อการบิน",
+        labelOrg: "สถาบัน / องค์กร *",
+        phOrg: "ระบุชื่อสถาบัน มหาวิทยาลัย หรือองค์กรของคุณ",
+        labelCourse: "สนใจโปรแกรมใดบ้าง? (เลือกได้มากกว่า 1 ข้อ) *",
+        optVisitTitle: "✈️ AirAsia Visit",
+        optVisitDesc: "ศึกษาดูงานด้านการบิน",
+        optBehindTitle: "⚙️ Behind the Sky",
+        optBehindDesc: "เปิดประสบการณ์เบื้องหลังการทำงานด้านการบิน",
+        optSafetyTitle: "🦺 Safety Evacuation",
+        optSafetyDesc: "เรียนรู้การอพยพฉุกเฉิน",
+        optSoftTitle: "💬 Soft Skills",
+        optSoftDesc: "พัฒนาทักษะการทำงาน",
+        optOverviewTitle: "📋 ขอรับภาพรวมโปรแกรมทั้งหมดก่อน",
+        optOtherTitle: "📝 อื่น ๆ โปรดระบุ",
+        phOtherDetail: "ระบุโปรแกรมหรือหัวข้อที่สนใจ...",
+        validationCheckbox: "กรุณาเลือกโปรแกรมที่สนใจอย่างน้อย 1 รายการ",
         pdpaText: "ข้าพเจ้ายินยอมให้ Thai AirAsia Academy เก็บรวบรวมและใช้ข้อมูลติดต่อนี้ เพื่อส่งโบรชัวร์และติดต่อแจ้งข้อเสนอพิเศษตามนโยบายความเป็นส่วนตัว",
-        btnSubmit: "ลงทะเบียนรับรายละเอียด",
-        btnSubmitting: "กำลังประมวลผล...",
+        btnSubmit: "ลงทะเบียนและดูรายละเอียด",
+        btnSubmitting: "กำลังส่งข้อมูล...",
         successTitle: "ขอบคุณสำหรับการลงทะเบียน",
-        successSubtitle: "ทีมงานได้รับข้อมูลของคุณเรียบร้อยแล้ว สามารถกดปุ่มด้านล่างเพื่อเปิดอ่านโบรชัวร์หลักสูตรได้ทันที",
-        btnCanva: "📖 คลิกเพื่อดูหลักสูตร",
+        successSubtitle: "กดปุ่มด้านล่างเพื่อเปิดดูรายละเอียดโปรแกรมของ Thai AirAsia Academy",
+        btnCanva: "📖 เปิดดูรายละเอียดโปรแกรม",
         errSubmit: "เกิดข้อผิดพลาดในการส่งข้อมูล กรุณาลองใหม่อีกครั้ง"
       },
       en: {
         badgeText: "Thai AirAsia Academy",
-        headerTitle: "Register for Course Details",
-        headerSubtitle: "Complete this quick form to get our brochures and special offers.",
+        headerTitle: "Register for Program Details",
+        headerSubtitle: "Complete this quick form to explore the preliminary program details of Thai AirAsia Academy.",
         labelFullname: "Full Name *",
         phFullname: "John Doe",
+        labelEmail: "Email (For brochure delivery) *",
+        phEmail: "example@gmail.com",
         labelPhone: "Phone Number *",
         phPhone: "0812345678",
-        labelEmail: "Email Address *",
-        phEmail: "example@gmail.com",
-        labelOrg: "University / Organization *",
-        phOrg: "University or Company name",
-        labelCourse: "Course of Interest *",
-        optDefault: "Select preferred course",
-        optVisit: "✈️ Study Tour - AirAsia Visit",
-        optBehind: "⚙️ Behind the Sky - Operational Tour",
-        optSafety: "🦺 Safety Evacuation",
-        optSoft: "🧠 Soft Skills",
-        optOther: "📝 Others (Please specify)",
-        labelOtherDetail: "Specify course or topic of interest *",
-        phOtherDetail: "e.g., Customer Service, Aviation English",
-        pdpaText: "I agree to let AirAsia Academy collect and use my contact information to provide brochures and program updates under the Privacy Policy.",
-        btnSubmit: "Register to Get Details",
-        btnSubmitting: "Processing...",
+        labelOrg: "Institution / Organization *",
+        phOrg: "University, institute, or organization name",
+        labelCourse: "Which programs are you interested in? (Multiple select) *",
+        optVisitTitle: "✈️ AirAsia Visit",
+        optVisitDesc: "Aviation study tour and facility exploration",
+        optBehindTitle: "⚙️ Behind the Sky",
+        optBehindDesc: "Behind-the-scenes aviation operations experience",
+        optSafetyTitle: "🦺 Safety Evacuation",
+        optSafetyDesc: "Aviation emergency evacuation training",
+        optSoftTitle: "💬 Soft Skills",
+        optSoftDesc: "Professional workplace skills development",
+        optOverviewTitle: "📋 Request full program overview first",
+        optOtherTitle: "📝 Others (Please specify)",
+        phOtherDetail: "Specify your topic or program of interest...",
+        validationCheckbox: "Please select at least one program of interest",
+        pdpaText: "I agree to let Thai AirAsia Academy collect and use my contact information to provide brochures and program updates under the Privacy Policy.",
+        btnSubmit: "Register & View Details",
+        btnSubmitting: "Submitting...",
         successTitle: "Thank You for Registering",
-        successSubtitle: "Tap the button below to explore our full course details and brochure.",
-        btnCanva: "📖 Click to View Courses",
+        successSubtitle: "Tap the button below to view the program details from Thai AirAsia Academy.",
+        btnCanva: "📖 View Program Details",
         errSubmit: "An error occurred while submitting. Please try again."
       }
     };
@@ -333,44 +373,43 @@
       currentLang = lang;
       const t = i18n[lang];
 
-      // Update Header & Badge
       document.getElementById('badgeText').textContent = t.badgeText;
       document.getElementById('headerTitle').textContent = t.headerTitle;
       document.getElementById('headerSubtitle').textContent = t.headerSubtitle;
 
-      // Update Labels & Placeholders
       document.getElementById('labelFullname').innerHTML = `${t.labelFullname}`;
       document.getElementById('fullname').placeholder = t.phFullname;
 
-      document.getElementById('labelPhone').innerHTML = `${t.labelPhone}`;
-      document.getElementById('phone').placeholder = t.phPhone;
-
       document.getElementById('labelEmail').innerHTML = `${t.labelEmail}`;
       document.getElementById('email').placeholder = t.phEmail;
+
+      document.getElementById('labelPhone').innerHTML = `${t.labelPhone}`;
+      document.getElementById('phone').placeholder = t.phPhone;
 
       document.getElementById('labelOrg').innerHTML = `${t.labelOrg}`;
       document.getElementById('organization').placeholder = t.phOrg;
 
       document.getElementById('labelCourse').innerHTML = `${t.labelCourse}`;
-      document.getElementById('optDefault').textContent = t.optDefault;
-      document.getElementById('optVisit').textContent = t.optVisit;
-      document.getElementById('optBehind').textContent = t.optBehind;
-      document.getElementById('optSafety').textContent = t.optSafety;
-      document.getElementById('optSoft').textContent = t.optSoft;
-      document.getElementById('optOther').textContent = t.optOther;
 
-      document.getElementById('labelOtherDetail').innerHTML = `${t.labelOtherDetail}`;
+      document.getElementById('optVisitTitle').textContent = t.optVisitTitle;
+      document.getElementById('optVisitDesc').textContent = t.optVisitDesc;
+      document.getElementById('optBehindTitle').textContent = t.optBehindTitle;
+      document.getElementById('optBehindDesc').textContent = t.optBehindDesc;
+      document.getElementById('optSafetyTitle').textContent = t.optSafetyTitle;
+      document.getElementById('optSafetyDesc').textContent = t.optSafetyDesc;
+      document.getElementById('optSoftTitle').textContent = t.optSoftTitle;
+      document.getElementById('optSoftDesc').textContent = t.optSoftDesc;
+      document.getElementById('optOverviewTitle').textContent = t.optOverviewTitle;
+      document.getElementById('optOtherTitle').textContent = t.optOtherTitle;
       document.getElementById('otherCourse').placeholder = t.phOtherDetail;
 
       document.getElementById('pdpaText').textContent = t.pdpaText;
       document.getElementById('btnText').textContent = t.btnSubmit;
 
-      // Update Success Section
       document.getElementById('successTitle').textContent = t.successTitle;
       document.getElementById('successSubtitle').textContent = t.successSubtitle;
       document.getElementById('btnCanvaText').textContent = t.btnCanva;
 
-      // Toggle Active Switcher Buttons
       const btnTh = document.getElementById('btnTh');
       const btnEn = document.getElementById('btnEn');
       if (lang === 'th') {
@@ -383,19 +422,19 @@
     }
 
     // ==========================================
-    // 🔀 3. FORM CONTROLLER & SUBMISSION
+    // 🔀 3. INTERACTIVE CONTROLLER
     // ==========================================
-    function handleCourseChange(value) {
-      const otherField = document.getElementById('otherCourseField');
-      const otherInput = document.getElementById('otherCourse');
-      if (value === 'Others') {
-        otherField.classList.remove('hidden');
-        otherInput.required = true;
-        otherInput.focus();
+    function toggleOtherInput(isChecked) {
+      const field = document.getElementById('otherCourseField');
+      const input = document.getElementById('otherCourse');
+      if (isChecked) {
+        field.classList.remove('hidden');
+        input.required = true;
+        input.focus();
       } else {
-        otherField.classList.add('hidden');
-        otherInput.required = false;
-        otherInput.value = '';
+        field.classList.add('hidden');
+        input.required = false;
+        input.value = '';
       }
     }
 
@@ -404,18 +443,39 @@
     const btnText = document.getElementById('btnText');
     const btnSpinner = document.getElementById('btnSpinner');
     const errorMessage = document.getElementById('errorMessage');
+    const checkboxValidationMsg = document.getElementById('checkboxValidationMsg');
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       errorMessage.classList.add('hidden');
+      checkboxValidationMsg.classList.add('hidden');
 
-      // Set Loading State
+      const checkedBoxes = Array.from(document.querySelectorAll('input[name="programs"]:checked'));
+      if (checkedBoxes.length === 0) {
+        checkboxValidationMsg.textContent = i18n[currentLang].validationCheckbox;
+        checkboxValidationMsg.classList.remove('hidden');
+        document.getElementById('programsContainer').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
       submitBtn.disabled = true;
       btnText.textContent = i18n[currentLang].btnSubmitting;
       btnSpinner.classList.remove('hidden');
 
-      const formData = new FormData(form);
-      const params = new URLSearchParams(formData);
+      const selectedPrograms = checkedBoxes.map(cb => {
+        if (cb.value === 'Others') {
+          return `อื่นๆ: ${document.getElementById('otherCourse').value.trim()}`;
+        }
+        return cb.value;
+      }).join(', ');
+
+      const params = new URLSearchParams();
+      params.append('fullname', document.getElementById('fullname').value.trim());
+      params.append('email', document.getElementById('email').value.trim());
+      params.append('phone', document.getElementById('phone').value.trim());
+      params.append('organization', document.getElementById('organization').value.trim());
+      params.append('course', selectedPrograms);
+      params.append('otherCourse', document.getElementById('otherCourse').value.trim() || '-');
 
       fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
@@ -430,7 +490,6 @@
         errorMessage.textContent = i18n[currentLang].errSubmit;
         errorMessage.classList.remove('hidden');
         
-        // Restore Button State
         submitBtn.disabled = false;
         btnText.textContent = i18n[currentLang].btnSubmit;
         btnSpinner.classList.add('hidden');
