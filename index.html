@@ -30,7 +30,6 @@
           class="h-8 md:h-9 w-auto object-contain"
           onerror="this.style.display='none'; document.getElementById('logoFallback').classList.remove('hidden');"
         />
-        <!-- Fallback Badge -->
         <div id="logoFallback" class="hidden items-center">
           <span class="inline-flex items-center justify-center bg-[#E52B20] text-white font-black text-lg px-2.5 py-0.5 rounded-full tracking-tighter">airasia</span>
         </div>
@@ -101,7 +100,7 @@
           <!-- Email -->
           <div>
             <label for="email" class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1" id="labelEmail">
-              อีเมล (สำหรับรับโบรชัวร์) <span class="text-[#E52B20]">*</span>
+              อีเมล (สำหรับรับรายละเอียดโปรแกรม) <span class="text-[#E52B20]">*</span>
             </label>
             <input 
               type="email" 
@@ -146,77 +145,137 @@
             >
           </div>
 
-          <!-- Interested Programs (Multiple Choice) -->
-          <div class="pt-1">
-            <label class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-2" id="labelCourse">
+          <!-- Minimal Checklist (Multiple Choice Without Bulky Boxes) -->
+          <div class="pt-2">
+            <label class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-2.5" id="labelCourse">
               สนใจโปรแกรมใดบ้าง? (เลือกได้มากกว่า 1 ข้อ) <span class="text-[#E52B20]">*</span>
             </label>
             
-            <div class="space-y-2.5" id="programsContainer">
-              <label class="flex items-start p-3 bg-gray-50 border border-gray-200 rounded-xl hover:border-red-300 hover:bg-red-50/20 cursor-pointer transition">
-                <input type="checkbox" name="programs" value="AirAsia Visit — ศึกษาดูงานด้านการบิน" class="program-checkbox mt-0.5 h-4 w-4 rounded border-gray-300 text-[#E52B20] focus:ring-[#E52B20]">
-                <div class="ml-3 text-sm">
-                  <span class="font-medium text-gray-900 block" id="optVisitTitle">✈️ AirAsia Visit</span>
-                  <span class="text-xs text-gray-500 block mt-0.5" id="optVisitDesc">ศึกษาดูงานด้านการบิน</span>
+            <div class="space-y-3" id="programsContainer">
+              
+              <!-- Option 1: AirAsia Visit -->
+              <label class="group flex items-start space-x-3 cursor-pointer select-none">
+                <input 
+                  type="checkbox" 
+                  name="programs" 
+                  value="AirAsia Visit — ศึกษาดูงานด้านการบิน" 
+                  class="mt-1 h-4 w-4 rounded border-gray-300 text-[#E52B20] focus:ring-[#E52B20] focus:ring-offset-0 transition cursor-pointer"
+                >
+                <div class="flex-1 text-sm">
+                  <span class="font-medium text-gray-800 group-hover:text-[#E52B20] transition duration-150 block" id="optVisitTitle">
+                    ✈️ AirAsia Visit
+                  </span>
+                  <span class="text-xs text-gray-500 block mt-0.5" id="optVisitDesc">
+                    ศึกษาดูงานด้านการบิน
+                  </span>
                 </div>
               </label>
 
-              <label class="flex items-start p-3 bg-gray-50 border border-gray-200 rounded-xl hover:border-red-300 hover:bg-red-50/20 cursor-pointer transition">
-                <input type="checkbox" name="programs" value="Behind the Sky — เปิดประสบการณ์เบื้องหลังการทำงานด้านการบิน" class="program-checkbox mt-0.5 h-4 w-4 rounded border-gray-300 text-[#E52B20] focus:ring-[#E52B20]">
-                <div class="ml-3 text-sm">
-                  <span class="font-medium text-gray-900 block" id="optBehindTitle">⚙️ Behind the Sky</span>
-                  <span class="text-xs text-gray-500 block mt-0.5" id="optBehindDesc">เปิดประสบการณ์เบื้องหลังการทำงานด้านการบิน</span>
+              <!-- Option 2: Behind the Sky -->
+              <label class="group flex items-start space-x-3 cursor-pointer select-none">
+                <input 
+                  type="checkbox" 
+                  name="programs" 
+                  value="Behind the Sky — เปิดประสบการณ์เบื้องหลังการทำงานด้านการบิน" 
+                  class="mt-1 h-4 w-4 rounded border-gray-300 text-[#E52B20] focus:ring-[#E52B20] focus:ring-offset-0 transition cursor-pointer"
+                >
+                <div class="flex-1 text-sm">
+                  <span class="font-medium text-gray-800 group-hover:text-[#E52B20] transition duration-150 block" id="optBehindTitle">
+                    ⚙️ Behind the Sky
+                  </span>
+                  <span class="text-xs text-gray-500 block mt-0.5" id="optBehindDesc">
+                    เปิดประสบการณ์เบื้องหลังการทำงานด้านการบิน
+                  </span>
                 </div>
               </label>
 
-              <label class="flex items-start p-3 bg-gray-50 border border-gray-200 rounded-xl hover:border-red-300 hover:bg-red-50/20 cursor-pointer transition">
-                <input type="checkbox" name="programs" value="Safety Evacuation — เรียนรู้การอพยพฉุกเฉิน" class="program-checkbox mt-0.5 h-4 w-4 rounded border-gray-300 text-[#E52B20] focus:ring-[#E52B20]">
-                <div class="ml-3 text-sm">
-                  <span class="font-medium text-gray-900 block" id="optSafetyTitle">🦺 Safety Evacuation</span>
-                  <span class="text-xs text-gray-500 block mt-0.5" id="optSafetyDesc">เรียนรู้การอพยพฉุกเฉิน</span>
+              <!-- Option 3: Safety Evacuation -->
+              <label class="group flex items-start space-x-3 cursor-pointer select-none">
+                <input 
+                  type="checkbox" 
+                  name="programs" 
+                  value="Safety Evacuation — เรียนรู้การอพยพฉุกเฉิน" 
+                  class="mt-1 h-4 w-4 rounded border-gray-300 text-[#E52B20] focus:ring-[#E52B20] focus:ring-offset-0 transition cursor-pointer"
+                >
+                <div class="flex-1 text-sm">
+                  <span class="font-medium text-gray-800 group-hover:text-[#E52B20] transition duration-150 block" id="optSafetyTitle">
+                    🦺 Safety Evacuation
+                  </span>
+                  <span class="text-xs text-gray-500 block mt-0.5" id="optSafetyDesc">
+                    เรียนรู้การอพยพฉุกเฉิน
+                  </span>
                 </div>
               </label>
 
-              <label class="flex items-start p-3 bg-gray-50 border border-gray-200 rounded-xl hover:border-red-300 hover:bg-red-50/20 cursor-pointer transition">
-                <input type="checkbox" name="programs" value="Soft Skills — พัฒนาทักษะการทำงาน" class="program-checkbox mt-0.5 h-4 w-4 rounded border-gray-300 text-[#E52B20] focus:ring-[#E52B20]">
-                <div class="ml-3 text-sm">
-                  <span class="font-medium text-gray-900 block" id="optSoftTitle">💬 Soft Skills</span>
-                  <span class="text-xs text-gray-500 block mt-0.5" id="optSoftDesc">พัฒนาทักษะการทำงาน</span>
+              <!-- Option 4: Soft Skills -->
+              <label class="group flex items-start space-x-3 cursor-pointer select-none">
+                <input 
+                  type="checkbox" 
+                  name="programs" 
+                  value="Soft Skills — พัฒนาทักษะการทำงาน" 
+                  class="mt-1 h-4 w-4 rounded border-gray-300 text-[#E52B20] focus:ring-[#E52B20] focus:ring-offset-0 transition cursor-pointer"
+                >
+                <div class="flex-1 text-sm">
+                  <span class="font-medium text-gray-800 group-hover:text-[#E52B20] transition duration-150 block" id="optSoftTitle">
+                    💬 Soft Skills
+                  </span>
+                  <span class="text-xs text-gray-500 block mt-0.5" id="optSoftDesc">
+                    พัฒนาทักษะการทำงาน
+                  </span>
                 </div>
               </label>
 
-              <label class="flex items-start p-3 bg-gray-50 border border-gray-200 rounded-xl hover:border-red-300 hover:bg-red-50/20 cursor-pointer transition">
-                <input type="checkbox" name="programs" value="ขอรับภาพรวมโปรแกรมทั้งหมดก่อน" class="program-checkbox mt-0.5 h-4 w-4 rounded border-gray-300 text-[#E52B20] focus:ring-[#E52B20]">
-                <div class="ml-3 text-sm">
-                  <span class="font-medium text-gray-900 block" id="optOverviewTitle">📋 ขอรับภาพรวมโปรแกรมทั้งหมดก่อน</span>
+              <!-- Option 5: Overview -->
+              <label class="group flex items-start space-x-3 cursor-pointer select-none">
+                <input 
+                  type="checkbox" 
+                  name="programs" 
+                  value="ขอรับภาพรวมโปรแกรมทั้งหมดก่อน" 
+                  class="mt-1 h-4 w-4 rounded border-gray-300 text-[#E52B20] focus:ring-[#E52B20] focus:ring-offset-0 transition cursor-pointer"
+                >
+                <div class="flex-1 text-sm">
+                  <span class="font-medium text-gray-800 group-hover:text-[#E52B20] transition duration-150 block" id="optOverviewTitle">
+                    📋 ขอรับภาพรวมโปรแกรมทั้งหมดก่อน
+                  </span>
                 </div>
               </label>
 
-              <label class="flex items-start p-3 bg-gray-50 border border-gray-200 rounded-xl hover:border-red-300 hover:bg-red-50/20 cursor-pointer transition">
-                <input type="checkbox" id="chkOther" name="programs" value="Others" onchange="toggleOtherInput(this.checked)" class="program-checkbox mt-0.5 h-4 w-4 rounded border-gray-300 text-[#E52B20] focus:ring-[#E52B20]">
-                <div class="ml-3 text-sm">
-                  <span class="font-medium text-gray-900 block" id="optOtherTitle">📝 อื่น ๆ โปรดระบุ</span>
+              <!-- Option 6: Others -->
+              <label class="group flex items-start space-x-3 cursor-pointer select-none">
+                <input 
+                  type="checkbox" 
+                  id="chkOther" 
+                  name="programs" 
+                  value="Others" 
+                  onchange="toggleOtherInput(this.checked)" 
+                  class="mt-1 h-4 w-4 rounded border-gray-300 text-[#E52B20] focus:ring-[#E52B20] focus:ring-offset-0 transition cursor-pointer"
+                >
+                <div class="flex-1 text-sm">
+                  <span class="font-medium text-gray-800 group-hover:text-[#E52B20] transition duration-150 block" id="optOtherTitle">
+                    📝 อื่น ๆ โปรดระบุ
+                  </span>
                 </div>
               </label>
+
             </div>
 
-            <!-- Other Field input -->
-            <div id="otherCourseField" class="hidden mt-2.5">
+            <!-- Other Input Field (Revealed smoothly) -->
+            <div id="otherCourseField" class="hidden mt-2.5 pl-7">
               <input 
                 type="text" 
                 id="otherCourse" 
                 name="otherCourse" 
                 placeholder="ระบุโปรแกรมหรือหัวข้อที่สนใจ..." 
-                class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-300 text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#E52B20] focus:border-transparent transition"
+                class="w-full px-3.5 py-2 rounded-xl bg-gray-50 border border-gray-300 text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#E52B20] focus:border-transparent transition"
               >
             </div>
             
-            <p id="checkboxValidationMsg" class="hidden text-xs text-[#E52B20] mt-1.5 font-medium"></p>
+            <p id="checkboxValidationMsg" class="hidden text-xs text-[#E52B20] mt-2 font-medium"></p>
           </div>
 
           <!-- PDPA Consent -->
-          <div class="pt-2">
-            <label class="flex items-start space-x-3 cursor-pointer">
+          <div class="pt-3 border-t border-gray-100">
+            <label class="flex items-start space-x-3 cursor-pointer select-none">
               <input 
                 type="checkbox" 
                 id="pdpaConsent" 
@@ -305,7 +364,7 @@
         headerSubtitle: "กรอกข้อมูลสั้น ๆ เพื่อดูรายละเอียดโปรแกรมเบื้องต้นของ Thai AirAsia Academy",
         labelFullname: "ชื่อ - นามสกุล *",
         phFullname: "สมชาย ใจดี",
-        labelEmail: "อีเมล (สำหรับรับโบรชัวร์) *",
+        labelEmail: "อีเมล (สำหรับรับรายละเอียดโปรแกรม) *",
         phEmail: "example@gmail.com",
         labelPhone: "เบอร์โทรศัพท์ *",
         phPhone: "0812345678",
@@ -324,7 +383,7 @@
         optOtherTitle: "📝 อื่น ๆ โปรดระบุ",
         phOtherDetail: "ระบุโปรแกรมหรือหัวข้อที่สนใจ...",
         validationCheckbox: "กรุณาเลือกโปรแกรมที่สนใจอย่างน้อย 1 รายการ",
-        pdpaText: "ข้าพเจ้ายินยอมให้ Thai AirAsia Academy เก็บรวบรวมและใช้ข้อมูลติดต่อนี้ เพื่อส่งโบรชัวร์และติดต่อแจ้งข้อเสนอพิเศษตามนโยบายความเป็นส่วนตัว",
+        pdpaText: "ข้าพเจ้ายินยอมให้ Thai AirAsia Academy เก็บรวบรวมและใช้ข้อมูลติดต่อนี้ เพื่อส่งรายละเอียดโปรแกรมและติดต่อแจ้งข้อเสนอพิเศษตามนโยบายความเป็นส่วนตัว",
         btnSubmit: "ลงทะเบียนและดูรายละเอียด",
         btnSubmitting: "กำลังส่งข้อมูล...",
         successTitle: "ขอบคุณสำหรับการลงทะเบียน",
@@ -338,7 +397,7 @@
         headerSubtitle: "Complete this quick form to explore the preliminary program details of Thai AirAsia Academy.",
         labelFullname: "Full Name *",
         phFullname: "John Doe",
-        labelEmail: "Email (For brochure delivery) *",
+        labelEmail: "Email (For receiving program details) *",
         phEmail: "example@gmail.com",
         labelPhone: "Phone Number *",
         phPhone: "0812345678",
@@ -357,7 +416,7 @@
         optOtherTitle: "📝 Others (Please specify)",
         phOtherDetail: "Specify your topic or program of interest...",
         validationCheckbox: "Please select at least one program of interest",
-        pdpaText: "I agree to let Thai AirAsia Academy collect and use my contact information to provide brochures and program updates under the Privacy Policy.",
+        pdpaText: "I agree to let Thai AirAsia Academy collect and use my contact information to provide program details and updates under the Privacy Policy.",
         btnSubmit: "Register & View Details",
         btnSubmitting: "Submitting...",
         successTitle: "Thank You for Registering",
